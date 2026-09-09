@@ -1,5 +1,6 @@
 import React from 'react';
 import { TelemetryBar } from './TelemetryBar';
+import { Signature } from './Signature';
 import { playTick } from '../utils/audio';
 
 export function Home({ onNavigate, onOpenPalette, onTriggerSnake }) {
@@ -15,13 +16,7 @@ export function Home({ onNavigate, onOpenPalette, onTriggerSnake }) {
 
         <div className="nameplate">
           <h1 className="hero-name editorial">Atharva Pawar</h1>
-          <div className="sig-container" aria-hidden="true">
-            <svg width="180" height="70" viewBox="0 0 180 70" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" style={{ color: 'var(--accent)', opacity: 0.9 }}>
-              <path d="M 12 52 C 28 22, 42 12, 54 28 C 64 42, 60 56, 44 56 C 26 56, 36 28, 72 26 C 94 25, 114 48, 128 36 C 138 27, 146 20, 162 26" />
-              <path d="M 46 22 L 56 12" />
-              <circle cx="166" cy="27" r="2" fill="var(--accent)" />
-            </svg>
-          </div>
+          <Signature width={160} />
         </div>
 
         <div className="role mono">Builder · Vibe Coder · Mumbai, India</div>
