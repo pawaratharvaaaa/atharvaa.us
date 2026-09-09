@@ -1,0 +1,41 @@
+# CONTEXT & ARCHITECTURE SPECIFICATION
+
+## 1. Project Background & Objective
+- Goal: Transform the provided single-page portfolio HTML file for Atharva Pawar into an exact, precise editorial portfolio matching the design language, typography, interactions, aesthetic, and visual layout of https://ziad.us/.
+- Original Document: A self-contained HTML file for "ATHARVA — A PORTFOLIO QUARTERLY" featuring basic serif/mono styling with 7 projects, a simple command palette, and tabbed view switching.
+- Target Aesthetic: The hyper-refined, typeset publication aesthetic of ziad.us ("A Portfolio Quarterly"), characterized by:
+  - Editorial serif headlines (Fraunces variable font with optical size variations).
+  - Precision body sans (Inter Tight) and terminal monospace (Geist Mono).
+  - Handwritten personal notes and margin annotations (Caveat).
+  - Dual theme architecture: Deep ink dark mode (#0e0d0b) and newsprint light mode (#f4efe6).
+  - Tactile editorial details: Rule lines, taped card frames (--tape gradient with rotation), live telemetry status bar (LAT/LON, time, scroll position).
+  - Terminal-inspired elements: TmuxFrame split windows, /ps process tables with state indicators (running, building, denied).
+  - Command palette (` or Cmd+K), Konami code easter egg, and CRT retro scanline overlay (data-crt="on").
+
+## 2. Identity & Profile Context
+- Full Name: Atharva Pawar
+- Moniker / Aliases: pawaratharvaaaa, thevibecoderguy
+- Location: Mumbai, India (Coordinates: LAT 19°04'N, LON 72°52'E, Airport code: BOM, Timezone: IST / UTC+5:30)
+- Title / Role: Builder · Vibe Coder
+- Hero Bio: "Builder. Vibe coder. Making things that are fun, useful, and occasionally unhinged."
+- Pull Quote: "“i build what i want to exist.”"
+- Detailed About: Atharva Pawar is a builder and vibe coder shipping consumer web apps, AI tools, and occasional chaotic experiments. Passionate about music technology, fitness, and building applications that balance utility with high craft.
+- Core Tech Stack: TypeScript, React, Vite, Python, FastAPI, Supabase, Vercel, Electron, Kotlin, HTML/CSS, Machine Learning & Audio Signal Processing.
+
+## 3. Project Catalogue Context (7 Projects)
+1. musclempire (SHIPPED): Fitness tracking, built the way it should be. Log workouts, track progress, stay consistent. Stack: TypeScript · React · Vite · Vercel · Google Apps Script.
+2. music-model (SHIPPED): Dual-engine ML system for song identification and acoustic playlist generation. "even if you spell it 'bheemian rapsody', it finds the song." Stack: Python · FastAPI · ML · fuzzy search · Web Audio API.
+3. Lumen (ONGOING): Apple Music–inspired offline music library. Scans folders on your device, plays local audio, shows lyrics from .lrc sidecar files or LRCLIB cached offline. Stack: TypeScript · Electron · Vite · LRC.
+4. wedoit (SHIPPED): Collaborative task management with real-time sync. Stack: React · TypeScript · Vite · Supabase · Vercel.
+5. PRANKER (SHIPPED): Inescapable audio rickroll disguised as a cognitive scanner. Maxes volume to 100%, intercepts hardware buttons, disables back gesture. Native Android APK. Stack: Kotlin · Android SDK · AudioManager.
+6. custome_todo (SHIPPED): A custom todo app. Simple, fast, deployed. Stack: HTML · JavaScript · Vercel.
+7. portfolio (ONGOING): Living personal portfolio site. Always a work in progress. Stack: TypeScript · React · Vite · Vercel.
+
+## 4. Subpages & Sections
+- Home: Masthead rule-row, editorial nameplate with personal signature mark, role, bio, pull quote, keyboard shortcuts chip, In This Issue table of contents (01 Work, 02 Now, 03 Lab, 04 Contact), hidden/collapsible SEO About aside.
+- Work: Masthead rule-row, status bar telemetry, title, lead, numbered project stack entries with interactive hover title color shift, status badges, tech stack tags, hand notes.
+- Work Detail Pages: Breadcrumbs/rule-row, status bar, title, subtitle, stat grid (role, duration, team, stack), external links (visit, repo), taped screenshot frame, pull quote, two-column margin notes + narrative prose, footer navigation (back to work, next project).
+- Now: TmuxFrame terminal window split with ~/now.md and ~/ps process monitor.
+- Lab: Terminal experiments frame for ~/lab/palette [2026] and interactive playground.
+- Contact: Numbered contact channels with hover arrow transitions and handwritten closing line.
+- Global: Sticky navigation header, command palette, theme toggle, CRT mode, Konami code snake easter egg, telemetry status bar, commit/date footer.

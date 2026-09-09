@@ -1,0 +1,47 @@
+# PRODUCT REQUIREMENTS DOCUMENT (PRD)
+
+## Project: Atharva Pawar Portfolio — "A Portfolio Quarterly"
+Reference Target: https://ziad.us/
+Version: 1.0.0
+Date: September 2026
+Status: Approved & Specified
+
+1. OBJECTIVE & ARCHITECTURE
+Redesign and transform the personal portfolio of Atharva Pawar (pawaratharvaaaa, thevibecoderguy) into an exact, pixel-perfect match of the publication-grade editorial design and tactile interactivity found on ziad.us.
+
+2. TYPOGRAPHY & DESIGN TOKENS
+- Fonts:
+  - Fraunces Variable (optical size 144/96, weight 900) for Editorial Titles and Italic Pullquotes
+  - Inter Tight (weights 400, 500, 600) for Body Text
+  - Geist Mono / IBM Plex Mono for Monospace Metadata, Rules, and Terminals
+  - Caveat (cursive) for Handwritten Notes (»...«)
+- Colors (Dark Mode):
+  --paper: #0e0d0b
+  --paper-2: #15130f
+  --ink: #ece6d8
+  --ink-2: #a8a193
+  --rule: #2a2722
+  --muted: #6b6458
+  --accent: #ff5a3d
+  --tape: #d4a54e
+  --ok: #7fb069
+  --warn: #e0a355
+  --err: #d66f5a
+- Colors (Light Mode):
+  --paper: #f4efe6
+  --paper-2: #eadfc9
+  --ink: #161412
+  --ink-2: #3a342d
+  --rule: #d9cfbd
+  --muted: #8a8173
+  --accent: #d63a1a
+  --tape: #f3d27a
+
+3. PAGES & ROUTES
+- Home: Masthead rule-row, editorial nameplate with animated SVG signature mark, role, bio, pull quote, shortcut chips, In This Issue table of contents (01 Work, 02 Now, 03 Lab, 04 Contact), SEO About aside.
+- Work: Seven projects list with numbers, metadata, editorial titles, shipped/ongoing badges (with pulsing live pips), tech stack tags, cursive hand notes.
+- Work Detail Pages: Individual deep-dive pages for all 7 projects (musclempire, music-model, Lumen, wedoit, PRANKER, custome_todo, portfolio) featuring stats dl, live/repo links, rotated taped preview cards, margin notes, and multi-section narrative prose (The Problem, The Approach, The Stack, Reflection).
+- Now: Dual-pane Tmux terminal frame with ~/now.md (building, on my mind) and ~/ps (live process monitor with PIDs 0101, 0202, 0303, 0404).
+- Lab: Terminal experiments view for ~/lab/palette [2026] and interactive playground triggers.
+- Contact: Editorial numbered contact channels (GitHub, Email, X/Twitter, Pinterest, Phone) with hover transitions and cursive closing statement.
+- Global: Sticky navigation header, live telemetry status bar (LAT, LON, BOM time, scroll px), command palette (` or Cmd+K), theme switcher, CRT scanline mode, Konami code snake easter egg.

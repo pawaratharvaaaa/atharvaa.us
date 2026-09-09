@@ -1,0 +1,84 @@
+/* ==========================================================================
+   COMMAND PALETTE MODAL (1:1 with ziad.us)
+   ========================================================================== */
+
+.pal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: color-mix(in srgb, var(--paper) 75%, transparent);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: var(--z-palette);
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 10vh;
+}
+.pal-overlay.open { display: flex; }
+
+.pal-box {
+  width: min(640px, 92vw);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  overflow: hidden;
+}
+
+.pal-prompt {
+  gap: var(--s-2);
+  padding: var(--s-4);
+  border-bottom: 1px solid var(--rule);
+  align-items: center;
+  display: flex;
+}
+.pal-prompt .caret { color: var(--accent); font-family: var(--font-mono); font-size: 1.2rem; }
+.pal-input {
+  font-family: var(--font-mono);
+  font-size: var(--fs-md);
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  outline: 0;
+  flex: 1;
+}
+.pal-input::placeholder { color: var(--muted); }
+
+.pal-list {
+  padding: var(--s-2);
+  max-height: 50vh;
+  margin: 0;
+  list-style: none;
+  overflow-y: auto;
+}
+
+.pal-group-head {
+  padding: var(--s-3) var(--s-3) var(--s-1);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-size: .68rem;
+}
+
+.pal-row { font-size: var(--fs-xs); }
+.pal-row button {
+  gap: var(--s-3);
+  width: 100%;
+  padding: var(--s-3);
+  text-align: start;
+  color: var(--ink);
+  grid-template-columns: 20ch 1fr;
+  display: grid;
+  align-items: center;
+  transition: background var(--d-fast);
+}
+.pal-row.sel, .pal-row:hover { background: var(--paper-2); }
+.pal-row.sel button, .pal-row:hover button { color: var(--accent); }
+.pal-row .hint { color: var(--muted); font-size: var(--fs-xxs); }
+
+.pal-foot {
+  padding: var(--s-3) var(--s-4);
+  border-top: 1px solid var(--rule);
+  font-size: var(--fs-xxs);
+  color: var(--muted);
+  letter-spacing: .05em;
+}

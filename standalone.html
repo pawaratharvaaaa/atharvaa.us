@@ -1,0 +1,764 @@
+<!doctype html>
+<html lang="en" data-theme="dark" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Atharva Pawar — Builder · Vibe Coder</title>
+  <meta name="description" content="Atharva Pawar — Builder & Vibe Coder in Mumbai, India. Making things that are fun, useful, and occasionally unhinged. Creator of musclempire, music-model, Lumen, wedoit, PRANKER, and more." />
+  <meta name="author" content="Atharva Pawar" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="theme-color" content="#0e0d0b" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f4efe6" media="(prefers-color-scheme: light)" />
+  <link rel="icon" href="./public/favicon.svg" type="image/svg+xml" />
+
+  <!-- Google Fonts: Fraunces Variable, Inter Tight, Geist Mono, Caveat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=Geist+Mono:wght@400;500;600;700&family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
+
+  <!-- Modular CSS Architecture (ziad.us design spec) -->
+  <link rel="stylesheet" href="./css/tokens.css" />
+  <link rel="stylesheet" href="./css/layout.css" />
+  <link rel="stylesheet" href="./css/work.css" />
+  <link rel="stylesheet" href="./css/tmux.css" />
+  <link rel="stylesheet" href="./css/palette.css" />
+  <link rel="stylesheet" href="./css/snake.css" />
+</head>
+<body>
+  <a href="#main" class="skip-link">skip to main</a>
+
+  <!-- Top Sticky Navigation (1:1 with ziad.us) -->
+  <nav class="nav container" aria-label="primary">
+    <a class="home-mark" href="#home" onclick="navTo('home'); return false;" aria-label="Atharva — home">A.</a>
+    <ol class="nav-list mono">
+      <li><a href="#work" class="nl" data-p="work" onclick="navTo('work'); return false;"><span class="num">01</span> <span>Work</span></a></li>
+      <li><a href="#now" class="nl" data-p="now" onclick="navTo('now'); return false;"><span class="num">02</span> <span>Now</span></a></li>
+      <li><a href="#lab" class="nl" data-p="lab" onclick="navTo('lab'); return false;"><span class="num">03</span> <span>Lab</span></a></li>
+      <li><a href="#contact" class="nl" data-p="contact" onclick="navTo('contact'); return false;"><span class="num">04</span> <span>Contact</span></a></li>
+      <li>
+        <button type="button" class="palette-btn mono" onclick="openPal()" aria-label="open command palette">
+          <kbd>`</kbd> <span class="palette-label">palette</span>
+        </button>
+      </li>
+    </ol>
+  </nav>
+
+  <main id="main" class="container">
+
+    <!-- ====================================================================
+         VIEW: HOME (#home)
+         ==================================================================== -->
+    <section class="page-view active" id="view-home">
+      <header class="masthead">
+        <div class="rule-row" dir="ltr">
+          <span>VOL. I</span>
+          <span>NO. 1</span>
+          <span>2026</span>
+          <span>ATHARVA.US — A PORTFOLIO QUARTERLY</span>
+        </div>
+
+        <div class="nameplate">
+          <h1 class="hero-name editorial">Atharva Pawar</h1>
+          <div class="sig-container" aria-hidden="true">
+            <svg width="220" height="75" viewBox="0 0 440 150" style="color:var(--accent);" role="img" aria-label="Atharva — personal mark">
+              <path d="M 30 110 C 60 40, 90 20, 110 50 C 130 80, 100 130, 85 130 C 70 130, 75 100, 100 95 C 130 90, 180 85, 210 90 C 240 95, 230 130, 245 130 C 260 130, 280 60, 290 50 C 300 40, 310 95, 330 95 C 350 95, 360 85, 380 90 C 400 95, 410 110, 430 85"
+                    fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+        </div>
+
+        <p class="role mono">Builder · Vibe Coder. Mumbai.</p>
+        <p class="bio">Building consumer apps, AI music systems, and occasional chaotic tools. Shipping fast and figuring it out in public.</p>
+        <blockquote class="pull editorial-italic">
+          <span class="mark">“</span>i build what i want to exist.<span class="mark">”</span>
+        </blockquote>
+
+        <div class="keys mono" aria-label="keyboard shortcuts">
+          <button type="button" class="key-chip" onclick="openPal()"><kbd>`</kbd> or <kbd>⌘K</kbd> <span>command palette</span></button>
+          <span class="key-chip static">
+            <kbd>↑</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd><kbd>←</kbd><kbd>→</kbd><kbd>B</kbd><kbd>A</kbd> <span>try it</span>
+          </span>
+        </div>
+
+        <section class="toc" aria-labelledby="toc-title">
+          <h2 id="toc-title" class="toc-title mono">IN THIS ISSUE</h2>
+          <ol class="toc-list">
+            <li><a href="#work" onclick="navTo('work'); return false;"><span class="num mono">01</span> <span class="dot">·</span> <span class="label editorial-italic">Work</span> <span class="desc hand">everything i've shipped, handwritten.</span></a></li>
+            <li><a href="#now" onclick="navTo('now'); return false;"><span class="num mono">02</span> <span class="dot">·</span> <span class="label editorial-italic">Now</span> <span class="desc hand">what i'm on this month.</span></a></li>
+            <li><a href="#lab" onclick="navTo('lab'); return false;"><span class="num mono">03</span> <span class="dot">·</span> <span class="label editorial-italic">Lab</span> <span class="desc hand">unfinished experiments, live.</span></a></li>
+            <li><a href="#contact" onclick="navTo('contact'); return false;"><span class="num mono">04</span> <span class="dot">·</span> <span class="label editorial-italic">Contact</span> <span class="desc hand">all the places you can reach me.</span></a></li>
+          </ol>
+        </section>
+      </header>
+
+      <aside class="about-box">
+        <h2 class="editorial">About</h2>
+        <p><strong>Atharva Pawar</strong> (also known as <em>pawaratharvaaaa, thevibecoderguy</em>) is a builder and vibe coder based in <strong>Mumbai, India</strong>. He builds web applications, AI tools, and audio software with a relentless focus on tactile feel and velocity.</p>
+        <p>Recent work: <strong>musclempire</strong> (streamlined fitness tracking), <strong>music-model</strong> (dual-engine ML song identification + playlist prediction), <strong>Lumen</strong> (offline music library with synchronized lyrics), <strong>wedoit</strong> (real-time collaborative task app), <strong>PRANKER</strong> (inescapable rickroll Android app), <strong>custome_todo</strong>, and his public <strong>portfolio</strong>.</p>
+        <p class="stack-line">Stack: TypeScript, React, Vite, Python, FastAPI, Supabase, Vercel, Electron, Kotlin, Web Audio API.</p>
+      </aside>
+    </section>
+
+    <!-- ====================================================================
+         VIEW: WORK INDEX (#work)
+         ==================================================================== -->
+    <section class="page-view" id="view-work">
+      <header class="work-head">
+        <div class="rule-row" dir="ltr">
+          <span>WORK</span>
+          <span>SEVEN PROJECTS</span>
+          <span>2026</span>
+        </div>
+        <div class="rule-row status mono" dir="ltr">
+          <span>LAT <span class="val">19°04'N</span></span>
+          <span>LON <span class="val">72°52'E</span></span>
+          <span>BOM <span class="val live-clock">--:--:--</span></span>
+          <span>SCROLL <span class="val live-scroll">0px</span></span>
+        </div>
+        <h1 class="work-title editorial">Work</h1>
+        <p class="work-lead">A stack of projects. Pick one.</p>
+      </header>
+
+      <ol class="project-list">
+        <!-- 01 musclempire -->
+        <li class="project-entry">
+          <a class="project-row" href="#detail-musclempire" onclick="navTo('detail-musclempire'); return false;">
+            <span class="num mono">01</span>
+            <span class="meta mono">2026 · SOLO</span>
+            <h2 class="entry-title editorial">musclempire</h2>
+            <span class="badge-mut mono">SHIPPED</span>
+            <span class="tags mono">TypeScript · React · Vite · Vercel</span>
+            <span class="note hand">»fitness tracking, built right«</span>
+          </a>
+        </li>
+
+        <!-- 02 music-model -->
+        <li class="project-entry">
+          <a class="project-row" href="#detail-music-model" onclick="navTo('detail-music-model'); return false;">
+            <span class="num mono">02</span>
+            <span class="meta mono">2026 · SOLO</span>
+            <h2 class="entry-title editorial">music-model — Song Prediction &amp; Identification Studio</h2>
+            <span class="badge-mut mono">SHIPPED</span>
+            <span class="tags mono">Python · FastAPI · ML · Fuzzy Search · Web Audio</span>
+            <span class="note hand">»even if you spell it wrong, it finds the song«</span>
+          </a>
+        </li>
+
+        <!-- 03 Lumen -->
+        <li class="project-entry">
+          <a class="project-row" href="#detail-lumen" onclick="navTo('detail-lumen'); return false;">
+            <span class="num mono">03</span>
+            <span class="meta mono">2026 · ONGOING · SOLO</span>
+            <h2 class="entry-title editorial">Lumen — offline music library</h2>
+            <span class="badge mono"><span class="pip" aria-hidden="true"></span> ONGOING</span>
+            <span class="tags mono">TypeScript · Electron · Vite · LRC</span>
+            <span class="note hand">»Apple Music feel. no internet required.«</span>
+          </a>
+        </li>
+
+        <!-- 04 wedoit -->
+        <li class="project-entry">
+          <a class="project-row" href="#detail-wedoit" onclick="navTo('detail-wedoit'); return false;">
+            <span class="num mono">04</span>
+            <span class="meta mono">2026 · SOLO</span>
+            <h2 class="entry-title editorial">wedoit — collaborative todo app</h2>
+            <span class="badge-mut mono">SHIPPED</span>
+            <span class="tags mono">TypeScript · React · Vite · Supabase</span>
+            <span class="note hand">»todo apps don't have to be boring«</span>
+          </a>
+        </li>
+
+        <!-- 05 PRANKER -->
+        <li class="project-entry">
+          <a class="project-row" href="#detail-pranker" onclick="navTo('detail-pranker'); return false;">
+            <span class="num mono">05</span>
+            <span class="meta mono">2026 · SOLO</span>
+            <h2 class="entry-title editorial">PRANKER — Quantum IQ &amp; Neuro Scanner</h2>
+            <span class="badge-mut mono">SHIPPED · APK</span>
+            <span class="tags mono">Kotlin · Android SDK · AudioManager</span>
+            <span class="note hand">»no pause button. no mercy.«</span>
+          </a>
+        </li>
+
+        <!-- 06 custome_todo -->
+        <li class="project-entry">
+          <a class="project-row" href="#detail-custome-todo" onclick="navTo('detail-custome-todo'); return false;">
+            <span class="num mono">06</span>
+            <span class="meta mono">2026 · SOLO</span>
+            <h2 class="entry-title editorial">custome_todo</h2>
+            <span class="badge-mut mono">SHIPPED</span>
+            <span class="tags mono">HTML · JavaScript · Vercel</span>
+            <span class="note hand">»a todo app with a custom twist«</span>
+          </a>
+        </li>
+
+        <!-- 07 portfolio -->
+        <li class="project-entry">
+          <a class="project-row" href="#detail-portfolio" onclick="navTo('detail-portfolio'); return false;">
+            <span class="num mono">07</span>
+            <span class="meta mono">2026 · ONGOING · SOLO</span>
+            <h2 class="entry-title editorial">portfolio</h2>
+            <span class="badge mono"><span class="pip" aria-hidden="true"></span> ONGOING</span>
+            <span class="tags mono">TypeScript · React · Vite · Vercel</span>
+            <span class="note hand">»always a work in progress«</span>
+          </a>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ====================================================================
+         DETAIL 01: musclempire
+         ==================================================================== -->
+    <article class="page-view" id="view-detail-musclempire">
+      <div class="rule-row" dir="ltr"><span>WORK</span><span>/ 01</span><span>2026</span><span>SHIPPED</span></div>
+      <div class="rule-row status mono" dir="ltr"><span>LAT <span class="val">19°04'N</span></span><span>LON <span class="val">72°52'E</span></span><span>BOM <span class="val live-clock">--:--:--</span></span></div>
+      <header class="detail-head">
+        <h1 class="detail-title editorial">musclempire</h1>
+        <p class="detail-subtitle">Fitness tracking, built the way it should be.</p>
+        <dl class="stats-dl mono">
+          <div><dt>role</dt><dd>Solo Developer</dd></div>
+          <div><dt>duration</dt><dd>2026</dd></div>
+          <div><dt>team</dt><dd>Solo</dd></div>
+          <div><dt>stack</dt><dd>TypeScript · React · Vite · Vercel</dd></div>
+        </dl>
+        <nav class="detail-links mono">
+          <a class="detail-link" href="https://musclempire-five.vercel.app" target="_blank" rel="noopener"><span class="k">visit</span><span class="arr">↗</span> <span class="host">musclempire-five.vercel.app</span></a>
+          <a class="detail-link" href="https://github.com/pawaratharvaaaa/musclempire" target="_blank" rel="noopener"><span class="k">repo</span><span class="arr">↗</span> <span class="host">github.com/pawaratharvaaaa/musclempire</span></a>
+        </nav>
+      </header>
+      <figure class="cover-frame">
+        <div class="taped-card">
+          <span class="tape tape-top" style="--r:-2.5deg;"></span>
+          <span class="tape tape-bottom" style="--r:3deg;"></span>
+          <div class="preview-canvas">
+            <div class="watermark">musclempire</div>
+            <div class="desc">Clean workout logging, progressive overload tracking, and headless persistence.</div>
+          </div>
+        </div>
+      </figure>
+      <blockquote class="pull editorial-italic"><span class="mark">“</span>built for zero-friction workout logging on gym floors.<span class="mark">”</span></blockquote>
+      <div class="detail-columns">
+        <aside class="notes">
+          <div class="margin-note"><span class="note-label">note</span><span class="body hand">»instant logging without paywalls«</span></div>
+          <div class="margin-note"><span class="note-label">note</span><span class="body hand">»Google Apps Script data integration«</span></div>
+          <div class="margin-note"><span class="note-label">note</span><span class="body hand">»deployed with sub-100ms response on Vercel«</span></div>
+        </aside>
+        <div class="prose">
+          <h2>The problem</h2>
+          <p>Mainstream fitness apps are bogged down by social feeds, predatory subscriptions, and 10-step workout set configurations. When you are between sets, you need to log reps and weight in two taps.</p>
+          <h2>The approach</h2>
+          <p>A focused, high-speed single-page web app built with React, Vite, and TypeScript. Workouts are logged instantaneously, history is stored with zero friction, and progress curves are visualized clearly.</p>
+          <h2>The stack</h2>
+          <p>TypeScript + React + Vite. Deployed on Vercel. Google Apps Script provides a reliable headless storage layer for user data records.</p>
+        </div>
+      </div>
+      <nav class="detail-foot mono">
+        <a class="back" href="#work" onclick="navTo('work'); return false;">← back to work</a>
+        <a class="next" href="#detail-music-model" onclick="navTo('detail-music-model'); return false;">next · music-model →</a>
+      </nav>
+    </article>
+
+    <!-- ====================================================================
+         DETAIL 02: music-model
+         ==================================================================== -->
+    <article class="page-view" id="view-detail-music-model">
+      <div class="rule-row" dir="ltr"><span>WORK</span><span>/ 02</span><span>2026</span><span>SHIPPED</span></div>
+      <div class="rule-row status mono" dir="ltr"><span>LAT <span class="val">19°04'N</span></span><span>LON <span class="val">72°52'E</span></span><span>BOM <span class="val live-clock">--:--:--</span></span></div>
+      <header class="detail-head">
+        <h1 class="detail-title editorial">music-model — Song Prediction &amp; Identification Studio</h1>
+        <p class="detail-subtitle">An intelligent dual-engine ML system for music streaming apps.</p>
+        <dl class="stats-dl mono">
+          <div><dt>role</dt><dd>Solo Engineer</dd></div>
+          <div><dt>duration</dt><dd>2026</dd></div>
+          <div><dt>team</dt><dd>Solo</dd></div>
+          <div><dt>stack</dt><dd>Python · FastAPI · ML · TF-IDF · Web Audio</dd></div>
+        </dl>
+        <nav class="detail-links mono">
+          <a class="detail-link" href="https://github.com/pawaratharvaaaa/music-model" target="_blank" rel="noopener"><span class="k">repo</span><span class="arr">↗</span> <span class="host">github.com/pawaratharvaaaa/music-model</span></a>
+        </nav>
+      </header>
+      <figure class="cover-frame">
+        <div class="taped-card">
+          <span class="tape tape-top" style="--r:-1deg;"></span>
+          <span class="tape tape-bottom" style="--r:2.5deg;"></span>
+          <div class="preview-canvas">
+            <div class="watermark">music-model</div>
+            <div class="desc">Fuzzy phonetic encoding + 6-dimensional acoustic vector clustering studio.</div>
+          </div>
+        </div>
+      </figure>
+      <blockquote class="pull editorial-italic"><span class="mark">“</span>even if you spell it 'bheemian rapsody', it finds the song.<span class="mark">”</span></blockquote>
+      <div class="detail-columns">
+        <aside class="notes">
+          <div class="margin-note"><span class="note-label">note</span><span class="body hand">»phonetic Double Metaphone + n-gram TF-IDF«</span></div>
+          <div class="margin-note"><span class="note-label">note</span><span class="body hand">»acoustic vector modeling across BPM, Energy, Valence«</span></div>
+          <div class="margin-note"><span class="note-label">note</span><span class="body hand">»generates seamless 10-track sonic transitions«</span></div>
+        </aside>
+        <div class="prose">
+          <h2>The problem</h2>
+          <p>You have a song stuck in your head but can't remember the exact spelling, or you want the next track to match your energy level seamlessly. Typical search engines fail at both.</p>
+          <h2>Engine 1 — Song Identification</h2>
+          <p>Identifies tracks from misspelled titles or partial lyric fragments. It dynamically blends fuzzy Levenshtein distance, phonetic Double Metaphone encodings, and character n-gram TF-IDF matrices.</p>
+          <h2>Engine 2 — Next-Song Prediction</h2>
+          <p>Predicts what track should play next based on multi-dimensional acoustic similarity: BPM, Energy, Danceability, Valence, Acousticness, and Genre vectors.</p>
+          <h2>The stack</h2>
+          <p>Python, FastAPI, Scikit-learn, TF-IDF, Web Audio API testing workbench.</p>
+        </div>
+      </div>
+      <nav class="detail-foot mono">
+        <a class="back" href="#work" onclick="navTo('work'); return false;">← back to work</a>
+        <a class="next" href="#detail-lumen" onclick="navTo('detail-lumen'); return false;">next · Lumen →</a>
+      </nav>
+    </article>
+
+    <!-- ====================================================================
+         DETAIL 03: Lumen
+         ==================================================================== -->
+    <article class="page-view" id="view-detail-lumen">
+      <div class="rule-row" dir="ltr"><span>WORK</span><span>/ 03</span><span>2026</span><span>ONGOING</span></div>
+      <div class="rule-row status mono" dir="ltr"><span>LAT <span class="val">19°04'N</span></span><span>LON <span class="val">72°52'E</span></span><span>BOM <span class="val live-clock">--:--:--</span></span></div>
+      <header class="detail-head">
+        <h1 class="detail-title editorial">Lumen — offline music library</h1>
+        <p class="detail-subtitle">Apple Music–inspired layout. Your local files. No internet required.</p>
+        <dl class="stats-dl mono">
+          <div><dt>role</dt><dd>Creator</dd></div>
+          <div><dt>status</dt><dd>Ongoing</dd></div>
+          <div><dt>stack</dt><dd>TypeScript · Electron · Vite · LRC Sidecar</dd></div>
+        </dl>
+        <nav class="detail-links mono">
+          <a class="detail-link" href="https://github.com/pawaratharvaaaa/appeul-music" target="_blank" rel="noopener"><span class="k">repo</span><span class="arr">↗</span> <span class="host">github.com/pawaratharvaaaa/appeul-music</span></a>
+        </nav>
+      </header>
+      <figure class="cover-frame">
+        <div class="taped-card">
+          <span class="tape tape-top" style="--r:-3deg;"></span>
+          <span class="tape tape-bottom" style="--r:4deg;"></span>
+          <div class="preview-canvas">
+            <div class="watermark">Lumen</div>
+            <div class="desc">Local directory indexing, synchronized lyrics, frosted glass UI.</div>
+          </div>
+        </div>
+      </figure>
+      <blockquote class="pull editorial-italic"><span class="mark">“</span>Apple Music feel. no subscriptions. no telemetry.<span class="mark">”</span></blockquote>
+      <div class="detail-columns">
+        <aside class="notes">
+          <div class="margin-note"><span class="note-label">note</span><span class="body hand">»local folder recursive indexing & ID3 parsing«</span></div>
+          <div class="margin-note"><span class="note-label">note</span><span class="body hand">»lyrics from sidecar .lrc or cached LRCLIB«</span></div>
+        </aside>
+        <div class="prose">
+          <h2>What it does</h2>
+          <p>Scans your local device storage, organizes music by metadata tags, and renders a clean Apple Music–inspired desktop player. Synchronized lyrics scroll smoothly alongside audio playback using sidecar <code>.lrc</code> files or cached offline LRCLIB responses.</p>
+          <h2>The stack</h2>
+          <p>TypeScript + Vite. Electron for native desktop packaging, with dual support for browser mode (<code>npm run web</code>) and native desktop mode (<code>npm run dev</code>).</p>
+        </div>
+      </div>
+      <nav class="detail-foot mono">
+        <a class="back" href="#work" onclick="navTo('work'); return false;">← back to work</a>
+        <a class="next" href="#detail-wedoit" onclick="navTo('detail-wedoit'); return false;">next · wedoit →</a>
+      </nav>
+    </article>
+
+    <!-- ====================================================================
+         DETAIL 04: wedoit
+         ==================================================================== -->
+    <article class="page-view" id="view-detail-wedoit">
+      <div class="rule-row" dir="ltr"><span>WORK</span><span>/ 04</span><span>2026</span><span>SHIPPED</span></div>
+      <div class="rule-row status mono" dir="ltr"><span>LAT <span class="val">19°04'N</span></span><span>LON <span class="val">72°52'E</span></span><span>BOM <span class="val live-clock">--:--:--</span></span></div>
+      <header class="detail-head">
+        <h1 class="detail-title editorial">wedoit — collaborative todo app</h1>
+        <p class="detail-subtitle">Collaborative task management. Todo apps don't have to be boring.</p>
+        <dl class="stats-dl mono">
+          <div><dt>role</dt><dd>Full Stack Developer</dd></div>
+          <div><dt>duration</dt><dd>2026</dd></div>
+          <div><dt>stack</dt><dd>TypeScript · React · Vite · Supabase · Vercel</dd></div>
+        </dl>
+        <nav class="detail-links mono">
+          <a class="detail-link" href="https://wedoit-three.vercel.app" target="_blank" rel="noopener"><span class="k">visit</span><span class="arr">↗</span> <span class="host">wedoit-three.vercel.app</span></a>
+          <a class="detail-link" href="https://github.com/pawaratharvaaaa/wedoit" target="_blank" rel="noopener"><span class="k">repo</span><span class="arr">↗</span> <span class="host">github.com/pawaratharvaaaa/wedoit</span></a>
+        </nav>
+      </header>
+      <figure class="cover-frame">
+        <div class="taped-card">
+          <span class="tape tape-top" style="--r:-1.5deg;"></span>
+          <span class="tape tape-bottom" style="--r:2deg;"></span>
+          <div class="preview-canvas">
+            <div class="watermark">wedoit</div>
+            <div class="desc">Real-time collaborative task workspace with PostgreSQL Row Level Security.</div>
+          </div>
+        </div>
+      </figure>
+      <blockquote class="pull editorial-italic"><span class="mark">“</span>real-time multi-user task sync with zero complexity.<span class="mark">”</span></blockquote>
+      <div class="detail-columns">
+        <aside class="notes">
+          <div class="margin-note"><span class="note-label">note</span><span class="body hand">»Supabase PostgreSQL with strict RLS«</span></div>
+          <div class="margin-note"><span class="note-label">note</span><span class="body hand">»WebSocket optimistic state replication«</span></div>
+        </aside>
+        <div class="prose">
+          <h2>What it is</h2>
+          <p>A full-stack collaborative task management application. Enables teams and partners to organize checklists together with real-time updates and authenticated workspace isolation.</p>
+          <h2>The stack</h2>
+          <p>React + TypeScript + Vite. Supabase provides managed PostgreSQL, real-time WebSocket change replication, and authentication with Row Level Security policies.</p>
+        </div>
+      </div>
+      <nav class="detail-foot mono">
+        <a class="back" href="#work" onclick="navTo('work'); return false;">← back to work</a>
+        <a class="next" href="#detail-pranker" onclick="navTo('detail-pranker'); return false;">next · PRANKER →</a>
+      </nav>
+    </article>
+
+    <!-- ====================================================================
+         DETAIL 05: PRANKER
+         ==================================================================== -->
+    <article class="page-view" id="view-detail-pranker">
+      <div class="rule-row" dir="ltr"><span>WORK</span><span>/ 05</span><span>2026</span><span>SHIPPED · APK</span></div>
+      <div class="rule-row status mono" dir="ltr"><span>LAT <span class="val">19°04'N</span></span><span>LON <span class="val">72°52'E</span></span><span>BOM <span class="val live-clock">--:--:--</span></span></div>
+      <header class="detail-head">
+        <h1 class="detail-title editorial">PRANKER — Quantum IQ &amp; Neuro Scanner</h1>
+        <p class="detail-subtitle">An inescapable audio rickroll disguised as a cognitive scanner. No mercy.</p>
+        <dl class="stats-dl mono">
+          <div><dt>role</dt><dd>Android Developer</dd></div>
+          <div><dt>platform</dt><dd>Native Android APK</dd></div>
+          <div><dt>stack</dt><dd>Kotlin · Android SDK · AudioManager</dd></div>
+        </dl>
+        <nav class="detail-links mono">
+          <a class="detail-link" href="https://github.com/pawaratharvaaaa/PRANKER" target="_blank" rel="noopener"><span class="k">repo</span><span class="arr">↗</span> <span class="host">github.com/pawaratharvaaaa/PRANKER</span></a>
+          <a class="detail-link" href="https://github.com/pawaratharvaaaa/PRANKER/releases" target="_blank" rel="noopener"><span class="k">download</span><span class="arr">↗</span> <span class="host">APK Releases</span></a>
+        </nav>
+      </header>
+      <figure class="cover-frame">
+        <div class="taped-card">
+          <span class="tape tape-top" style="--r:-2deg;"></span>
+          <span class="tape tape-bottom" style="--r:1.5deg;"></span>
+          <div class="preview-canvas">
+            <div class="watermark">PRANKER</div>
+            <div class="desc">Cognitive scanner facade -> STREAM_MUSIC 100% -> infinite audio loop.</div>
+          </div>
+        </div>
+      </figure>
+      <blockquote class="pull editorial-italic"><span class="mark">“</span>no pause button. no mercy.<span class="mark">”</span></blockquote>
+      <div class="detail-columns">
+        <aside class="notes">
+          <div class="margin-note"><span class="note-label">note</span><span class="body hand">»overrides STREAM_MUSIC directly to 100% volume«</span></div>
+          <div class="margin-note"><span class="note-label">note</span><span class="body hand">»intercepts hardware volume buttons and back gesture«</span></div>
+          <div class="margin-note"><span class="note-label">note</span><span class="body hand">»only escape route: physical device power off«</span></div>
+        </aside>
+        <div class="prose">
+          <h2>The trap</h2>
+          <p>Disguised as a high-tech neuro-cognitive scanner. Once the victim taps "CALIBRATE &amp; START SCAN", the app maxes <code>STREAM_MUSIC</code> to 100%, starts an infinite rickroll loop, overrides hardware volume buttons, and disables Android back navigation.</p>
+          <h2>The stack</h2>
+          <p>Kotlin · Android SDK · AudioManager · <code>onBackPressedDispatcher</code> · <code>FLAG_KEEP_SCREEN_ON</code>.</p>
+        </div>
+      </div>
+      <nav class="detail-foot mono">
+        <a class="back" href="#work" onclick="navTo('work'); return false;">← back to work</a>
+        <a class="next" href="#detail-custome-todo" onclick="navTo('detail-custome-todo'); return false;">next · custome_todo →</a>
+      </nav>
+    </article>
+
+    <!-- ====================================================================
+         DETAIL 06: custome_todo
+         ==================================================================== -->
+    <article class="page-view" id="view-detail-custome-todo">
+      <div class="rule-row" dir="ltr"><span>WORK</span><span>/ 06</span><span>2026</span><span>SHIPPED</span></div>
+      <div class="rule-row status mono" dir="ltr"><span>LAT <span class="val">19°04'N</span></span><span>LON <span class="val">72°52'E</span></span><span>BOM <span class="val live-clock">--:--:--</span></span></div>
+      <header class="detail-head">
+        <h1 class="detail-title editorial">custome_todo</h1>
+        <p class="detail-subtitle">A custom todo app. Simple, fast, deployed.</p>
+        <dl class="stats-dl mono">
+          <div><dt>role</dt><dd>Developer</dd></div>
+          <div><dt>duration</dt><dd>2026</dd></div>
+          <div><dt>stack</dt><dd>HTML · JavaScript · CSS · Vercel</dd></div>
+        </dl>
+        <nav class="detail-links mono">
+          <a class="detail-link" href="https://custometodo.vercel.app" target="_blank" rel="noopener"><span class="k">visit</span><span class="arr">↗</span> <span class="host">custometodo.vercel.app</span></a>
+          <a class="detail-link" href="https://github.com/pawaratharvaaaa/custome_todo" target="_blank" rel="noopener"><span class="k">repo</span><span class="arr">↗</span> <span class="host">github.com/pawaratharvaaaa/custome_todo</span></a>
+        </nav>
+      </header>
+      <figure class="cover-frame">
+        <div class="taped-card">
+          <span class="tape tape-top" style="--r:-1deg;"></span>
+          <span class="tape tape-bottom" style="--r:2deg;"></span>
+          <div class="preview-canvas">
+            <div class="watermark">custome_todo</div>
+            <div class="desc">Vanilla JavaScript task manager with custom state interactions.</div>
+          </div>
+        </div>
+      </figure>
+      <blockquote class="pull editorial-italic"><span class="mark">“</span>lightweight utility stripped of all modern web bloat.<span class="mark">”</span></blockquote>
+      <div class="detail-columns">
+        <aside class="notes">
+          <div class="margin-note"><span class="note-label">note</span><span class="body hand">»sub-15KB asset payload«</span></div>
+          <div class="margin-note"><span class="note-label">note</span><span class="body hand">»zero client runtime dependencies«</span></div>
+        </aside>
+        <div class="prose">
+          <h2>What it is</h2>
+          <p>A lightweight custom todo app built lean. It demonstrates pure vanilla client performance with instant state persistence and minimal overhead.</p>
+        </div>
+      </div>
+      <nav class="detail-foot mono">
+        <a class="back" href="#work" onclick="navTo('work'); return false;">← back to work</a>
+        <a class="next" href="#detail-portfolio" onclick="navTo('detail-portfolio'); return false;">next · portfolio →</a>
+      </nav>
+    </article>
+
+    <!-- ====================================================================
+         DETAIL 07: portfolio
+         ==================================================================== -->
+    <article class="page-view" id="view-detail-portfolio">
+      <div class="rule-row" dir="ltr"><span>WORK</span><span>/ 07</span><span>2026</span><span>ONGOING</span></div>
+      <div class="rule-row status mono" dir="ltr"><span>LAT <span class="val">19°04'N</span></span><span>LON <span class="val">72°52'E</span></span><span>BOM <span class="val live-clock">--:--:--</span></span></div>
+      <header class="detail-head">
+        <h1 class="detail-title editorial">portfolio</h1>
+        <p class="detail-subtitle">Always a work in progress.</p>
+        <dl class="stats-dl mono">
+          <div><dt>role</dt><dd>Creator</dd></div>
+          <div><dt>status</dt><dd>Ongoing</dd></div>
+          <div><dt>stack</dt><dd>TypeScript · React · Vite · Vercel</dd></div>
+        </dl>
+        <nav class="detail-links mono">
+          <a class="detail-link" href="https://atharvaportfolio-nine.vercel.app" target="_blank" rel="noopener"><span class="k">visit</span><span class="arr">↗</span> <span class="host">atharvaportfolio-nine.vercel.app</span></a>
+          <a class="detail-link" href="https://github.com/pawaratharvaaaa/portfolio" target="_blank" rel="noopener"><span class="k">repo</span><span class="arr">↗</span> <span class="host">github.com/pawaratharvaaaa/portfolio</span></a>
+        </nav>
+      </header>
+      <figure class="cover-frame">
+        <div class="taped-card">
+          <span class="tape tape-top" style="--r:-2.5deg;"></span>
+          <span class="tape tape-bottom" style="--r:3deg;"></span>
+          <div class="preview-canvas">
+            <div class="watermark">portfolio</div>
+            <div class="desc">A living editorial portfolio quarterly, built in public.</div>
+          </div>
+        </div>
+      </figure>
+      <blockquote class="pull editorial-italic"><span class="mark">“</span>the portfolio is never finished; it evolves with every commit.<span class="mark">”</span></blockquote>
+      <div class="detail-columns">
+        <aside class="notes">
+          <div class="margin-note"><span class="note-label">note</span><span class="body hand">»building in public on Vercel«</span></div>
+          <div class="margin-note"><span class="note-label">note</span><span class="body hand">»keyboard-first navigation with prompt palette«</span></div>
+        </aside>
+        <div class="prose">
+          <h2>What it is</h2>
+          <p>The portfolio website itself. Built with TypeScript, React, and Vite, deployed on Vercel. Combining classical typeset editorial styling with retro computing aesthetics.</p>
+        </div>
+      </div>
+      <nav class="detail-foot mono">
+        <a class="back" href="#work" onclick="navTo('work'); return false;">← back to work</a>
+      </nav>
+    </article>
+
+    <!-- ====================================================================
+         VIEW: NOW (#now)
+         ==================================================================== -->
+    <section class="page-view" id="view-now">
+      <header class="work-head">
+        <h1 class="work-title editorial">Now</h1>
+        <p class="work-lead">What I'm on this month.</p>
+      </header>
+      <div class="panes">
+        <!-- Main Tmux Pane (~/now.md) -->
+        <div class="tmux-frame mono" dir="ltr">
+          <header class="tmux-bar">
+            <span class="tmux-dots" aria-hidden="true">
+              <span class="tmux-dot"></span><span class="tmux-dot"></span><span class="tmux-dot"></span>
+            </span>
+            <span class="tmux-title">~/now.md</span>
+          </header>
+          <div class="tmux-body prose">
+            <h2>building</h2>
+            <ul>
+              <li><strong>musclempire</strong> — shipping workout logging that gym-goers can use in 2 taps.</li>
+              <li><strong>music-model</strong> — making the phonetic song identification and playlist clustering engine sharper.</li>
+              <li><strong>Lumen</strong> — the offline music library player that needs zero cloud subscriptions or tracking.</li>
+            </ul>
+            <h2>on my mind</h2>
+            <ul>
+              <li><strong>vibe coding</strong> — building software that feels alive, tactile, and fun to make.</li>
+              <li><strong>music technology</strong> — exploring the sweet spot between local audio files and modern machine learning models.</li>
+              <li><strong>shipping fast</strong> — putting working code out into the world and iterating in public.</li>
+            </ul>
+          </div>
+          <footer class="tmux-bar bot">
+            <span class="tmux-pane-tab active">[0] now</span>
+            <span class="tmux-pane-tab" onclick="navTo('lab')">[1] lab</span>
+            <span class="tmux-pane-tab" onclick="navTo('contact')">[2] contact</span>
+          </footer>
+        </div>
+
+        <!-- Side Tmux Pane (~/ps) -->
+        <aside class="tmux-frame mono" dir="ltr">
+          <header class="tmux-bar">
+            <span class="tmux-dots" aria-hidden="true">
+              <span class="tmux-dot"></span><span class="tmux-dot"></span><span class="tmux-dot"></span>
+            </span>
+            <span class="tmux-title">~/ps</span>
+          </header>
+          <div class="tmux-body">
+            <table class="ps-table">
+              <thead><tr><th>PID</th><th>CMD</th><th>STATE</th></tr></thead>
+              <tbody>
+                <tr><td>0101</td><td>musclempire</td><td class="ok">running</td></tr>
+                <tr><td>0202</td><td>music-model</td><td class="warn">building</td></tr>
+                <tr><td>0303</td><td>lumen/appeul</td><td class="warn">building</td></tr>
+                <tr><td>0404</td><td>sleep</td><td class="err">denied</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         VIEW: LAB (#lab)
+         ==================================================================== -->
+    <section class="page-view" id="view-lab">
+      <header class="work-head">
+        <h1 class="work-title editorial">Lab</h1>
+        <p class="work-lead">Half-built things, on purpose.</p>
+      </header>
+      <div class="tmux-frame mono" dir="ltr">
+        <header class="tmux-bar">
+          <span class="tmux-dots" aria-hidden="true"><span class="tmux-dot"></span><span class="tmux-dot"></span><span class="tmux-dot"></span></span>
+          <span class="tmux-title">~/lab/palette  [2026]</span>
+        </header>
+        <div class="tmux-body prose">
+          <h2 class="editorial">the palette, as a feature</h2>
+          <h2>the thing</h2>
+          <p>press <code>`</code> or <code>⌘K</code>. a palette opens. navigate everything without touching the nav bar. type <code>:snake</code> for a retro game or <code>:crt</code> for monitor scanlines.</p>
+          <h2>why it's here</h2>
+          <p>portfolios usually have a hamburger menu and three buttons. this one has a prompt. if you know the grammar, you move around faster than a mouse can follow.</p>
+          <div style="margin-top:24px; display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="key-chip" onclick="toggleCRT()"><kbd>:crt</kbd> <span>toggle scanlines</span></button>
+            <button class="key-chip" onclick="spawnSnake()"><kbd>:snake</kbd> <span>play snake</span></button>
+            <button class="key-chip" onclick="toggleTheme()"><kbd>:theme</kbd> <span>switch palette</span></button>
+            <button class="key-chip" onclick="openPal()"><kbd>`</kbd> <span>open command palette</span></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         VIEW: CONTACT (#contact)
+         ==================================================================== -->
+    <section class="page-view" id="view-contact">
+      <header class="work-head">
+        <div class="rule-row" dir="ltr">
+          <span>CONTACT</span>
+          <span>BOM · GMT+5:30</span>
+          <span>REPLIES ≤ 24H</span>
+        </div>
+        <div class="rule-row status mono" dir="ltr">
+          <span>LAT <span class="val">19°04'N</span></span>
+          <span>LON <span class="val">72°52'E</span></span>
+          <span>BOM <span class="val live-clock">--:--:--</span></span>
+        </div>
+        <h1 class="work-title editorial">Contact</h1>
+        <p class="work-lead">the places i actually reply.</p>
+      </header>
+
+      <ol class="contact-list">
+        <!-- 01 GitHub -->
+        <li class="contact-row">
+          <a class="contact-entry" href="https://github.com/pawaratharvaaaa" target="_blank" rel="noopener">
+            <span class="num mono">01</span>
+            <span class="where editorial">GitHub</span>
+            <span class="sub hand">see the code, read the commits</span>
+            <span class="host mono">github.com/pawaratharvaaaa</span>
+            <span class="arr" aria-hidden="true">↗</span>
+          </a>
+        </li>
+
+        <!-- 02 Email -->
+        <li class="contact-row">
+          <a class="contact-entry" href="mailto:pawaratharvaak@gmail.com">
+            <span class="num mono">02</span>
+            <span class="where editorial">Email</span>
+            <span class="sub hand">the one i actually read</span>
+            <span class="host mono">pawaratharvaak@gmail.com</span>
+            <span class="arr" aria-hidden="true">↗</span>
+          </a>
+        </li>
+
+        <!-- 03 X / Twitter -->
+        <li class="contact-row">
+          <a class="contact-entry" href="https://x.com/thevibecoderguy" target="_blank" rel="noopener">
+            <span class="num mono">03</span>
+            <span class="where editorial">X / Twitter</span>
+            <span class="sub hand">thoughts, builds, vibes</span>
+            <span class="host mono">@thevibecoderguy</span>
+            <span class="arr" aria-hidden="true">↗</span>
+          </a>
+        </li>
+
+        <!-- 04 Pinterest -->
+        <li class="contact-row">
+          <a class="contact-entry" href="https://in.pinterest.com/kavikogussabohotaatah/" target="_blank" rel="noopener">
+            <span class="num mono">04</span>
+            <span class="where editorial">Pinterest</span>
+            <span class="sub hand">visual inspiration board</span>
+            <span class="host mono">pinterest.com/kavikogussabohotaatah</span>
+            <span class="arr" aria-hidden="true">↗</span>
+          </a>
+        </li>
+
+        <!-- 05 Phone -->
+        <li class="contact-row">
+          <a class="contact-entry" href="tel:+918850061997">
+            <span class="num mono">05</span>
+            <span class="where editorial">Phone</span>
+            <span class="sub hand">for serious things only</span>
+            <span class="host mono">+91 88500 61997</span>
+            <span class="arr" aria-hidden="true">↗</span>
+          </a>
+        </li>
+      </ol>
+
+      <p class="contact-closer hand">i'd rather you drop a message than wait to run into me somewhere.</p>
+    </section>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="footer container">
+    <div class="footer-inner">
+      <div>
+        <span class="commit mono">atharva.portfolio @ a4f92bc</span>
+        <span class="sep" aria-hidden="true">·</span>
+        <span class="mono">built 2026-09-09 03:00Z</span>
+      </div>
+      <div>
+        <button class="palette-trigger mono" type="button" onclick="openPal()" aria-label="open command palette">
+          <kbd>`</kbd> <span>press · for palette</span>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Command Palette Modal -->
+  <div class="pal-overlay" id="palOverlay">
+    <div class="pal-box">
+      <div class="pal-prompt">
+        <span class="caret">›</span>
+        <input class="pal-input" id="palInput" placeholder="Type a page, project, or :command…" autocomplete="off" spellcheck="false" />
+      </div>
+      <ul class="pal-list" id="palResults"></ul>
+      <div class="pal-foot mono">↑↓ navigate &nbsp;·&nbsp; Enter select &nbsp;·&nbsp; Esc close</div>
+    </div>
+  </div>
+
+  <!-- Playable Retro Snake Game Modal -->
+  <div class="snake-modal" id="snakeModal">
+    <div class="snake-box">
+      <div style="display:flex; justify-content:space-between; width:100%; align-items:center;">
+        <span class="mono" style="font-size:var(--fs-xs); color:var(--accent); font-weight:700;">🐍 RETRO SNAKE ARCADE</span>
+        <span class="mono" id="snakeScore" style="color:var(--ink);">SCORE: 0</span>
+        <button class="mono" onclick="closeSnake()" style="color:var(--muted); font-size:var(--fs-xs);">[ESC] CLOSE</button>
+      </div>
+      <canvas id="snakeCanvas" width="360" height="360"></canvas>
+      <div class="mono" style="font-size:var(--fs-xxs); color:var(--muted);">Use Arrow Keys or W/A/S/D to move</div>
+    </div>
+  </div>
+
+  <!-- App Script (Modern ES Module with inline fallback) -->
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+/* ==========================================================================
+   KONAMI FLASH & RETRO ARCADE SNAKE (Easter Eggs)
+   ========================================================================== */
+
+.konami-flash {
+  position: fixed; inset: 0; background: #fff;
+  z-index: var(--z-toast); pointer-events: none;
+  mix-blend-mode: difference;
+  animation: flashAnim 1.2s var(--ease-out) forwards;
+}
+@keyframes flashAnim { 0% { opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { opacity: 0; } }
+
+.snake-modal {
+  display: none;
+  position: fixed; inset: 0; z-index: var(--z-toast);
+  background: rgba(0,0,0,0.85);
+  align-items: center; justify-content: center;
+}
+.snake-modal.open { display: flex; }
+
+.snake-box {
+  background: var(--paper);
+  border: 1px solid var(--accent);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 20px 70px rgba(0,0,0,0.8);
+}
+
+#snakeCanvas { background: var(--paper-2); border: 1px solid var(--rule); }
+
+/* View Visibility Controller */
+.page-view { display: none; }
+.page-view.active { display: block; }
