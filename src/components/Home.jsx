@@ -11,17 +11,17 @@ export function Home({ onNavigate, onOpenPalette, onTriggerSnake }) {
           <span>VOL. I</span>
           <span>NO. 1</span>
           <span>2026</span>
-          <span>ATHARVA.US — A PORTFOLIO QUARTERLY</span>
+          <span>ATHARVAA.US — A PORTFOLIO QUARTERLY</span>
         </div>
 
         <div className="nameplate">
-          <h1 className="hero-name editorial">Atharva Pawar</h1>
+          <h1 className="hero-name editorial">Atharvaa Pawar</h1>
           <Signature width={160} />
         </div>
 
-        <div className="role mono">Builder · Vibe Coder · Mumbai, India</div>
+        <div className="role mono">Builder · Vibe Coder · Bhatwadi, Ghatkopar · Mumbai, India</div>
         <p className="bio">
-          Making things that are fun, useful, and occasionally unhinged. Creator of <strong style={{ color: 'var(--ink)' }}>musclempire</strong>, <strong style={{ color: 'var(--ink)' }}>music-model</strong>, <strong style={{ color: 'var(--ink)' }}>Lumen</strong>, <strong style={{ color: 'var(--ink)' }}>wedoit</strong>, <strong style={{ color: 'var(--ink)' }}>PRANKER</strong>, and more.
+          Atharvaa Anil Pawar — Making things that are fun, useful, and occasionally unhinged. Creator of <strong style={{ color: 'var(--ink)' }}>musclempire</strong>, <strong style={{ color: 'var(--ink)' }}>music-model</strong>, <strong style={{ color: 'var(--ink)' }}>Lumen</strong>, <strong style={{ color: 'var(--ink)' }}>wedoit</strong>, <strong style={{ color: 'var(--ink)' }}>PRANKER</strong>, and more.
         </p>
 
         <TelemetryBar />

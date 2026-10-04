@@ -36,6 +36,13 @@ export function Contact() {
       sub: '+91 88500 61997',
       host: 'direct line',
       href: 'tel:+918850061997'
+    },
+    {
+      num: '06',
+      where: 'Location',
+      sub: 'Bhatwadi, Ghatkopar, Mumbai',
+      host: 'base',
+      href: 'https://maps.google.com/?q=Bhatwadi,+Ghatkopar,+Mumbai'
     }
   ];
 
