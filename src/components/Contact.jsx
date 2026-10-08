@@ -46,10 +46,10 @@ export function Contact() {
     },
     {
       num: '07',
-      where: 'Buy Me a Coffee',
-      sub: 'buymeacoffee.com/pawaratharvaaaa',
-      host: 'fuel',
-      href: 'https://buymeacoffee.com/pawaratharvaaaa'
+      where: '☕ Buy Me a Coffee',
+      sub: '8850061997@upi',
+      host: 'UPI pay',
+      href: 'upi://pay?pa=8850061997@upi&pn=Atharva&cu=INR'
     }
   ];
 
@@ -61,20 +61,47 @@ export function Contact() {
       </header>
 
       <ol className="contact-list">
-        {channels.map((c) => (
-          <li className="contact-row" key={c.num}>
-            <a className="contact-entry" href={c.href} target="_blank" rel="noopener noreferrer">
-              <span className="num mono">{c.num}</span>
-              <span className="where editorial">{c.where}</span>
-              <span className="sub mono">{c.sub}</span>
-              <span className="host mono">{c.host}</span>
-              <span className="arr" aria-hidden="true">
-                ↗
-              </span>
-            </a>
-          </li>
-        ))}
+        {channels.map((c) => {
+          const isHttp = c.href.startsWith('http');
+          return (
+            <li className="contact-row" key={c.num}>
+              <a
+                className="contact-entry"
+                href={c.href}
+                target={isHttp ? '_blank' : undefined}
+                rel={isHttp ? 'noopener noreferrer' : undefined}
+              >
+                <span className="num mono">{c.num}</span>
+                <span className="where editorial">{c.where}</span>
+                <span className="sub mono">{c.sub}</span>
+                <span className="host mono">{c.host}</span>
+                <span className="arr" aria-hidden="true">
+                  ↗
+                </span>
+              </a>
+            </li>
+          );
+        })}
       </ol>
+
+      <div style={{ marginBlock: 'var(--s-6)' }}>
+        <a
+          href="upi://pay?pa=8850061997@upi&pn=Atharva&cu=INR"
+          className="detail-link mono"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            padding: '10px 20px',
+            fontSize: 'var(--fs-sm)',
+            border: '1px solid var(--rule)',
+            background: 'var(--paper-2)',
+            color: 'var(--ink)'
+          }}
+        >
+          ☕ Buy Me a Coffee <span className="host mono" style={{ fontSize: 'var(--fs-xs)', color: 'var(--muted)' }}>(8850061997@upi)</span>
+        </a>
+      </div>
 
       <p className="contact-closer hand">i'd rather you drop a message than wait to run into me somewhere.</p>
     </section>
