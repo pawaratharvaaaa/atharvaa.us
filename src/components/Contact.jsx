@@ -84,25 +84,6 @@ export function Contact() {
         })}
       </ol>
 
-      <div style={{ marginBlock: 'var(--s-6)' }}>
-        <a
-          href="upi://pay?pa=8850061997@upi&pn=Atharva&cu=INR"
-          className="detail-link mono"
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '8px',
-            padding: '10px 20px',
-            fontSize: 'var(--fs-sm)',
-            border: '1px solid var(--rule)',
-            background: 'var(--paper-2)',
-            color: 'var(--ink)'
-          }}
-        >
-          ☕ Buy Me a Coffee <span className="host mono" style={{ fontSize: 'var(--fs-xs)', color: 'var(--muted)' }}>(8850061997@upi)</span>
-        </a>
-      </div>
-
       <p className="contact-closer hand">i'd rather you drop a message than wait to run into me somewhere.</p>
     </section>
   );
