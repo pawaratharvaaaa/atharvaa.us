@@ -3,7 +3,7 @@ import { projects } from '../data/projectsData';
 import { playTick, playSuccess } from '../utils/audio';
 import { triggerCanvasConfetti, triggerDomConfetti } from '../utils/confetti';
 
-export function CommandPalette({ isOpen, onClose, onNavigate, theme, onToggleTheme, isCrtOn, onToggleCrt, onTriggerSnake }) {
+export function CommandPalette({ isOpen, onClose, onNavigate, theme, onToggleTheme, isCrtOn, onToggleCrt, onTriggerSnake, onOpenCoffee }) {
   const [query, setQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [toast, setToast] = useState(null);
@@ -20,6 +20,7 @@ export function CommandPalette({ isOpen, onClose, onNavigate, theme, onToggleThe
     { group: 'Pages', label: 'Now', hint: "02 · what i'm on this month", action: () => onNavigate('now') },
     { group: 'Pages', label: 'Lab', hint: '03 · experiments & toys', action: () => onNavigate('lab') },
     { group: 'Pages', label: 'Contact', hint: '04 · how to reach me', action: () => onNavigate('contact') },
+    { group: 'Pages', label: 'Buy Me a Coffee', hint: '☕ UPI payment & QR interface', action: () => { onClose(); if (onOpenCoffee) onOpenCoffee(); } },
     { group: 'Pages', label: 'Home', hint: '00 · masthead & toc', action: () => onNavigate('home') },
 
     // Projects

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function Contact() {
+export function Contact({ onOpenCoffee }) {
   const channels = [
     {
       num: '01',
@@ -63,6 +63,7 @@ export function Contact() {
       <ol className="contact-list">
         {channels.map((c) => {
           const isHttp = c.href.startsWith('http');
+          const isCoffee = c.num === '07';
           return (
             <li className="contact-row" key={c.num}>
               <a
@@ -70,6 +71,12 @@ export function Contact() {
                 href={c.href}
                 target={isHttp ? '_blank' : undefined}
                 rel={isHttp ? 'noopener noreferrer' : undefined}
+                onClick={(e) => {
+                  if (isCoffee && onOpenCoffee) {
+                    e.preventDefault();
+                    onOpenCoffee();
+                  }
+                }}
               >
                 <span className="num mono">{c.num}</span>
                 <span className="where editorial">{c.where}</span>

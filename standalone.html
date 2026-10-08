@@ -724,7 +724,7 @@
 
         <!-- 07 Buy Me a Coffee -->
         <li class="contact-row">
-          <a class="contact-entry" href="upi://pay?pa=8850061997@upi&pn=Atharva&cu=INR">
+          <a class="contact-entry" href="upi://pay?pa=8850061997@upi&pn=Atharva&cu=INR" onclick="openCoffee(); return false;">
             <span class="num mono">07</span>
             <span class="where editorial">☕ Buy Me a Coffee</span>
             <span class="sub hand">8850061997@upi (GPay / PhonePe / Paytm)</span>
@@ -816,6 +816,66 @@
       <div class="mono" style="font-size:var(--fs-xxs); color:var(--muted);">Use Arrow Keys or W/A/S/D to move</div>
     </div>
   </div>
+
+  <!-- UPI Payment Modal -->
+  <div class="pal-overlay" id="coffeeModal" style="align-items:center; padding-top:0; z-index:var(--z-toast);">
+    <div class="pal-box" style="width:min(500px, 94vw); padding:24px; max-height:92vh; overflow-y:auto;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; border-bottom:1px solid var(--rule); padding-bottom:14px;">
+        <div>
+          <span class="mono" style="font-size:var(--fs-xxs); color:var(--accent); letter-spacing:0.12em; text-transform:uppercase; font-weight:600;">UPI PAYMENT INTERFACE</span>
+          <h2 class="editorial" style="font-size:var(--fs-xl); margin:4px 0 0; font-weight:900;">Buy Atharva a Coffee ☕</h2>
+          <p style="margin:4px 0 0; color:var(--muted); font-size:var(--fs-xs);">Scan the QR or tap below to support code, models & vibe builds.</p>
+        </div>
+        <button type="button" class="mono" onclick="closeCoffee()" style="background:transparent; border:0; color:var(--muted); font-size:var(--fs-sm); cursor:pointer;">[ESC]</button>
+      </div>
+
+      <div style="margin:20px 0; display:flex; flex-direction:column; align-items:center; text-align:center;">
+        <div style="background:#ffffff; padding:12px; border-radius:6px; border:1px solid var(--rule); box-shadow:0 4px 20px rgba(0,0,0,0.15); display:inline-block; margin:0 auto;">
+          <img id="coffeeQrImg" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi%3A%2F%2Fpay%3Fpa%3D8850061997%40upi%26pn%3DAtharva%26cu%3DINR%26am%3D100%26tn%3DCoffee%2520for%2520Atharva&margin=10" alt="UPI QR Code" width="190" height="190" style="display:block;" />
+        </div>
+        <div class="mono" style="margin-top:10px; font-size:var(--fs-xxs); color:var(--muted);">Scan with GPay · PhonePe · Paytm · BHIM</div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <a id="coffeeUpiBtn" href="upi://pay?pa=8850061997@upi&pn=Atharva&cu=INR&am=100&tn=Coffee%20for%20Atharva" class="mono" style="display:flex; align-items:center; justify-content:center; gap:8px; padding:12px 18px; background:var(--accent); color:var(--accent-ink); text-decoration:none; font-weight:700; font-size:var(--fs-sm); border-radius:2px; text-align:center;">
+          ☕ Pay ₹100 via UPI App ↗
+        </a>
+        <button type="button" class="mono" onclick="copyUpi()" id="copyUpiBtn" style="padding:10px 18px; background:var(--paper-2); border:1px solid var(--rule); color:var(--ink); font-weight:600; font-size:var(--fs-xs); cursor:pointer;">
+          📋 Copy UPI ID: 8850061997@upi
+        </button>
+      </div>
+
+      <div class="mono" style="margin-top:16px; padding-top:12px; border-top:1px solid var(--rule); font-size:var(--fs-xxs); color:var(--muted); display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px;">
+        <span>Payee: Atharva Pawar</span>
+        <span>Verified Merchant: @upi</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openCoffee() {
+      const modal = document.getElementById('coffeeModal');
+      if (modal) modal.classList.add('open');
+    }
+    function closeCoffee() {
+      const modal = document.getElementById('coffeeModal');
+      if (modal) modal.classList.remove('open');
+    }
+    function copyUpi() {
+      navigator.clipboard.writeText('8850061997@upi').then(() => {
+        const btn = document.getElementById('copyUpiBtn');
+        if (btn) {
+          const old = btn.textContent;
+          btn.textContent = '✓ UPI ID Copied!';
+          btn.style.color = 'var(--ok)';
+          setTimeout(() => { btn.textContent = old; btn.style.color = 'var(--ink)'; }, 2000);
+        }
+      });
+    }
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeCoffee();
+    });
+  </script>
 
   <!-- App Script (Modern ES Module with inline fallback) -->
   <script type="module" src="./js/app.js"></script>

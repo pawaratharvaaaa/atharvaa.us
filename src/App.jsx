@@ -10,6 +10,7 @@ import { NotFound } from './components/NotFound';
 import { Footer } from './components/Footer';
 import { CommandPalette } from './components/CommandPalette';
 import { SnakeModal } from './components/SnakeModal';
+import { CoffeeModal } from './components/CoffeeModal';
 import { projects } from './data/projectsData';
 import { playSuccess } from './utils/audio';
 
@@ -23,6 +24,7 @@ export function App() {
   });
   const [isPaletteOpen, setIsPaletteOpen] = useState(false);
   const [isSnakeOpen, setIsSnakeOpen] = useState(false);
+  const [isCoffeeOpen, setIsCoffeeOpen] = useState(false);
 
   // Sync theme attribute to HTML root
   useEffect(() => {
@@ -40,7 +42,10 @@ export function App() {
   useEffect(() => {
     function parseHash() {
       const hash = window.location.hash.replace(/^#\/?/, '').trim();
-      if (hash) {
+      if (hash === 'coffee' || hash === 'pay') {
+        setIsCoffeeOpen(true);
+        setRoute('contact');
+      } else if (hash) {
         setRoute(hash);
       } else {
         setRoute('home');
@@ -134,6 +139,7 @@ export function App() {
       if (e.key === 'Escape') {
         setIsPaletteOpen(false);
         setIsSnakeOpen(false);
+        setIsCoffeeOpen(false);
       }
 
       // Konami detector
@@ -208,7 +214,7 @@ export function App() {
         ) : ViewComponent === Work ? (
           <Work onNavigate={handleNavigate} />
         ) : ViewComponent === Contact ? (
-          <Contact />
+          <Contact onOpenCoffee={() => setIsCoffeeOpen(true)} />
         ) : ViewComponent === NotFound ? (
           <NotFound onNavigate={handleNavigate} />
         ) : (
@@ -231,9 +237,12 @@ export function App() {
         isCrtOn={isCrtOn}
         onToggleCrt={toggleCrt}
         onTriggerSnake={triggerSnake}
+        onOpenCoffee={() => setIsCoffeeOpen(true)}
       />
 
       <SnakeModal isOpen={isSnakeOpen} onClose={() => setIsSnakeOpen(false)} />
+
+      <CoffeeModal isOpen={isCoffeeOpen} onClose={() => setIsCoffeeOpen(false)} />
     </>
   );
 }
