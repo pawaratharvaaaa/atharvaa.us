@@ -829,6 +829,63 @@
         <button type="button" class="mono" onclick="closeCoffee()" style="background:transparent; border:0; color:var(--muted); font-size:var(--fs-sm); cursor:pointer;">[ESC]</button>
       </div>
 
+      <!-- 1 to 1000 Interactive Amount Slider -->
+      <div style="margin-top:18px; background:var(--paper-2); border:1px solid var(--rule); padding:16px; border-radius:2px;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
+          <span class="mono" style="font-size:var(--fs-xxs); color:var(--muted); text-transform:uppercase; letter-spacing:0.08em;">
+            AMOUNT SLIDER (₹1 – ₹1,000)
+          </span>
+          <div style="display:flex; align-items:center; gap:4px; background:var(--paper); border:1px solid var(--rule); padding:3px 8px; border-radius:2px;">
+            <span class="mono" style="font-size:var(--fs-xs); color:var(--muted);">₹</span>
+            <input
+              id="coffeeNumberInput"
+              type="number"
+              min="1"
+              max="1000"
+              value="100"
+              oninput="updateCoffeeAmount(this.value)"
+              class="mono"
+              style="width:54px; background:transparent; border:0; color:var(--ink); font-size:var(--fs-sm); font-weight:700; outline:none; text-align:right;"
+            />
+          </div>
+        </div>
+
+        <!-- Large Hero Display & Perk Tag -->
+        <div style="display:flex; justify-content:space-between; align-items:center; margin:4px 0 10px;">
+          <div id="coffeeHeroAmount" class="editorial" style="font-size:2.4rem; font-weight:900; line-height:1; color:var(--ink);">
+            ₹100
+          </div>
+          <div id="coffeePerkBadge" class="mono" style="font-size:var(--fs-xs); color:var(--accent); display:flex; align-items:center; gap:6px;">
+            <span>☕</span>
+            <span style="font-weight:600;">Hot coffee for midnight debugging</span>
+          </div>
+        </div>
+
+        <!-- Range Slider 1 to 1000 -->
+        <input
+          id="coffeeSliderInput"
+          type="range"
+          min="1"
+          max="1000"
+          step="1"
+          value="100"
+          oninput="updateCoffeeAmount(this.value)"
+          class="coffee-slider"
+          style="background: linear-gradient(to right, var(--accent) 0%, var(--accent) 9.9%, var(--rule) 9.9%, var(--rule) 100%);"
+          aria-label="Payment amount slider from 1 to 1000"
+        />
+
+        <!-- Scale Milestones (Clickable) -->
+        <div style="display:flex; justify-content:space-between; margin-top:6px;">
+          <button type="button" class="coffee-scale-btn" onclick="updateCoffeeAmount(1)">₹1 (Min)</button>
+          <button type="button" class="coffee-scale-btn" onclick="updateCoffeeAmount(100)">₹100</button>
+          <button type="button" class="coffee-scale-btn" onclick="updateCoffeeAmount(250)">₹250</button>
+          <button type="button" class="coffee-scale-btn" onclick="updateCoffeeAmount(500)">₹500</button>
+          <button type="button" class="coffee-scale-btn" onclick="updateCoffeeAmount(750)">₹750</button>
+          <button type="button" class="coffee-scale-btn" onclick="updateCoffeeAmount(1000)">₹1,000 (Max)</button>
+        </div>
+      </div>
+
       <div style="margin:20px 0; display:flex; flex-direction:column; align-items:center; text-align:center;">
         <div style="background:#ffffff; padding:12px; border-radius:6px; border:1px solid var(--rule); box-shadow:0 4px 20px rgba(0,0,0,0.15); display:inline-block; margin:0 auto;">
           <img id="coffeeQrImg" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi%3A%2F%2Fpay%3Fpa%3D8850061997%40upi%26pn%3DAtharva%26cu%3DINR%26am%3D100%26tn%3DCoffee%2520for%2520Atharva&margin=10" alt="UPI QR Code" width="190" height="190" style="display:block;" />
@@ -860,6 +917,46 @@
     function closeCoffee() {
       const modal = document.getElementById('coffeeModal');
       if (modal) modal.classList.remove('open');
+    }
+    function updateCoffeeAmount(val) {
+      let n = parseInt(val, 10);
+      if (isNaN(n) || n < 1) n = 1;
+      if (n > 1000) n = 1000;
+      
+      const slider = document.getElementById('coffeeSliderInput');
+      const numInput = document.getElementById('coffeeNumberInput');
+      const hero = document.getElementById('coffeeHeroAmount');
+      const badge = document.getElementById('coffeePerkBadge');
+      const upiBtn = document.getElementById('coffeeUpiBtn');
+      const qrImg = document.getElementById('coffeeQrImg');
+
+      if (slider) {
+        slider.value = n;
+        const pct = ((n - 1) / (1000 - 1)) * 100;
+        slider.style.background = `linear-gradient(to right, var(--accent) 0%, var(--accent) ${pct}%, var(--rule) ${pct}%, var(--rule) 100%)`;
+      }
+      if (numInput && numInput.value != n) numInput.value = n;
+      if (hero) hero.textContent = `₹${n}`;
+
+      if (badge) {
+        let icon = '☕', text = 'Hot coffee for midnight debugging';
+        if (n < 50) { icon = '🍬'; text = 'Sweet gesture & good vibes'; }
+        else if (n < 100) { icon = '☕'; text = 'Cutting chai for quick sprints'; }
+        else if (n < 250) { icon = '☕'; text = 'Hot coffee for midnight debugging'; }
+        else if (n < 500) { icon = '🥐'; text = 'Coffee + snack fuel combo'; }
+        else if (n < 1000) { icon = '⚡'; text = 'Dev rocket fuel pack'; }
+        else { icon = '👑'; text = 'Supreme Sponsor & Vibe Master'; }
+        badge.innerHTML = `<span>${icon}</span><span style="font-weight:600;">${text}</span>`;
+      }
+
+      const upiUrl = `upi://pay?pa=8850061997@upi&pn=Atharva&cu=INR&am=${n}&tn=Coffee%20for%20Atharva`;
+      if (upiBtn) {
+        upiBtn.href = upiUrl;
+        upiBtn.innerHTML = `☕ Pay ₹${n} via UPI App ↗`;
+      }
+      if (qrImg) {
+        qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiUrl)}&margin=10`;
+      }
     }
     function copyUpi() {
       navigator.clipboard.writeText('8850061997@upi').then(() => {

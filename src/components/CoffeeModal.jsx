@@ -21,11 +21,11 @@ export function CoffeeModal({ isOpen, onClose }) {
 
   if (!isOpen) return null;
 
-  const validAmount = amount && !isNaN(Number(amount)) && Number(amount) > 0 ? Number(amount) : null;
-  const upiUrl = validAmount
-    ? `upi://pay?pa=${upiId}&pn=${encodeURIComponent(payeeName)}&cu=INR&am=${validAmount}&tn=${encodeURIComponent('Coffee for Atharva')}`
-    : `upi://pay?pa=${upiId}&pn=${encodeURIComponent(payeeName)}&cu=INR&tn=${encodeURIComponent('Coffee for Atharva')}`;
+  const lastTickRef = React.useRef(0);
 
+  const numAmount = Math.max(1, Math.min(1000, Number(amount) || 1));
+  const validAmount = numAmount;
+  const upiUrl = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(payeeName)}&cu=INR&am=${validAmount}&tn=${encodeURIComponent('Coffee for Atharva')}`;
   const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiUrl)}&margin=10`;
 
   const handleCopy = () => {
@@ -38,12 +38,33 @@ export function CoffeeModal({ isOpen, onClose }) {
     });
   };
 
-  const presetAmounts = [
-    { label: '₹50', value: '50', icon: '☕' },
-    { label: '₹100', value: '100', icon: '☕☕' },
-    { label: '₹250', value: '250', icon: '🥐' },
-    { label: '₹500', value: '500', icon: '🚀' }
-  ];
+  const handleSliderChange = (e) => {
+    const val = e.target.value;
+    setAmount(val);
+    const now = Date.now();
+    if (now - lastTickRef.current > 60) {
+      playTick();
+      lastTickRef.current = now;
+    }
+  };
+
+  const setExactAmount = (val) => {
+    playTick();
+    setAmount(String(val));
+  };
+
+  const getPerk = (val) => {
+    if (val < 50) return { icon: '🍬', text: 'Sweet gesture & good vibes' };
+    if (val < 100) return { icon: '☕', text: 'Cutting chai for quick sprints' };
+    if (val < 250) return { icon: '☕', text: 'Hot coffee for midnight debugging' };
+    if (val < 500) return { icon: '🥐', text: 'Coffee + snack fuel combo' };
+    if (val < 1000) return { icon: '⚡', text: 'Dev rocket fuel pack' };
+    return { icon: '👑', text: 'Supreme Sponsor & Vibe Master' };
+  };
+
+  const perk = getPerk(numAmount);
+  const percent = ((numAmount - 1) / (1000 - 1)) * 100;
+  const milestones = [1, 100, 250, 500, 750, 1000];
 
   return (
     <div className="pal-overlay open" onClick={onClose} style={{ zIndex: 'var(--z-toast)', alignItems: 'center', paddingTop: 0 }}>
@@ -91,62 +112,87 @@ export function CoffeeModal({ isOpen, onClose }) {
           </button>
         </div>
 
-        {/* Amount Selector */}
-        <div style={{ marginTop: '16px' }}>
-          <label className="mono" style={{ fontSize: 'var(--fs-xxs)', color: 'var(--muted)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
-            SELECT AMOUNT
-          </label>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px', marginBottom: '12px' }}>
-            {presetAmounts.map((preset) => {
-              const active = amount === preset.value;
+        {/* 1 to 1000 Interactive Amount Slider */}
+        <div style={{ marginTop: '18px', background: 'var(--paper-2)', border: '1px solid var(--rule)', padding: '16px', borderRadius: '2px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '8px' }}>
+            <span className="mono" style={{ fontSize: 'var(--fs-xxs)', color: 'var(--muted)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+              AMOUNT SLIDER (₹1 – ₹1,000)
+            </span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '4px', background: 'var(--paper)', border: '1px solid var(--rule)', padding: '3px 8px', borderRadius: '2px' }}>
+              <span className="mono" style={{ fontSize: 'var(--fs-xs)', color: 'var(--muted)' }}>₹</span>
+              <input
+                type="number"
+                min="1"
+                max="1000"
+                value={amount}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  if (val === '') {
+                    setAmount('');
+                  } else {
+                    const n = parseInt(val, 10);
+                    if (!isNaN(n)) {
+                      setAmount(String(Math.min(1000, Math.max(1, n))));
+                    }
+                  }
+                }}
+                className="mono"
+                style={{
+                  width: '54px',
+                  background: 'transparent',
+                  border: 0,
+                  color: 'var(--ink)',
+                  fontSize: 'var(--fs-sm)',
+                  fontWeight: 700,
+                  outline: 'none',
+                  textAlign: 'right'
+                }}
+              />
+            </div>
+          </div>
+
+          {/* Large Hero Display & Perk Tag */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '4px 0 10px' }}>
+            <div className="editorial" style={{ fontSize: '2.4rem', fontWeight: 900, lineHeight: 1, color: 'var(--ink)' }}>
+              ₹{numAmount}
+            </div>
+            <div className="mono" style={{ fontSize: 'var(--fs-xs)', color: 'var(--accent)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <span>{perk.icon}</span>
+              <span style={{ fontWeight: 600 }}>{perk.text}</span>
+            </div>
+          </div>
+
+          {/* Range Slider 1 to 1000 */}
+          <input
+            type="range"
+            min="1"
+            max="1000"
+            step="1"
+            value={numAmount}
+            onChange={handleSliderChange}
+            className="coffee-slider"
+            style={{
+              background: `linear-gradient(to right, var(--accent) 0%, var(--accent) ${percent}%, var(--rule) ${percent}%, var(--rule) 100%)`
+            }}
+            aria-label="Payment amount slider from 1 to 1000"
+          />
+
+          {/* Scale Milestones (Clickable) */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '6px' }}>
+            {milestones.map((m) => {
+              const active = numAmount === m;
               return (
                 <button
-                  key={preset.value}
+                  key={m}
                   type="button"
-                  className="mono"
-                  onClick={() => {
-                    playTick();
-                    setAmount(preset.value);
-                  }}
-                  style={{
-                    padding: '8px 4px',
-                    fontSize: 'var(--fs-xs)',
-                    fontWeight: active ? 700 : 500,
-                    border: `1px solid ${active ? 'var(--accent)' : 'var(--rule)'}`,
-                    background: active ? 'var(--accent)' : 'var(--paper-2)',
-                    color: active ? 'var(--accent-ink)' : 'var(--ink)',
-                    borderRadius: '2px',
-                    cursor: 'pointer',
-                    transition: 'all var(--d-fast) var(--ease-out)',
-                    textAlign: 'center'
-                  }}
+                  className={`coffee-scale-btn ${active ? 'active' : ''}`}
+                  onClick={() => setExactAmount(m)}
+                  title={`Set to ₹${m}`}
                 >
-                  <div>{preset.icon}</div>
-                  <div>{preset.label}</div>
+                  {m === 1 ? '₹1 (Min)' : m === 1000 ? '₹1,000 (Max)' : `₹${m}`}
                 </button>
               );
             })}
-          </div>
-
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'var(--paper-2)', border: '1px solid var(--rule)', padding: '6px 12px' }}>
-            <span className="mono" style={{ color: 'var(--muted)', fontSize: 'var(--fs-xs)' }}>Custom ₹:</span>
-            <input
-              type="number"
-              min="1"
-              max="100000"
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
-              placeholder="Enter amount"
-              className="mono"
-              style={{
-                flex: 1,
-                background: 'transparent',
-                border: 0,
-                color: 'var(--ink)',
-                fontSize: 'var(--fs-sm)',
-                outline: 'none'
-              }}
-            />
           </div>
         </div>
 
