@@ -19,8 +19,16 @@ export function initRouter(onNavigate) {
         window.history.pushState(null, '', '#' + cleanId);
       }
     } else {
-      const fallback = document.getElementById('view-home');
-      if (fallback) fallback.classList.add('active');
+      const notFound = document.getElementById('view-404');
+      if (notFound) {
+        notFound.classList.add('active');
+        if (window.location.hash !== '#' + cleanId) {
+          window.history.pushState(null, '', '#' + cleanId);
+        }
+      } else {
+        const fallback = document.getElementById('view-home');
+        if (fallback) fallback.classList.add('active');
+      }
     }
 
     const topSection = cleanId.startsWith('detail-') ? 'work' : cleanId;

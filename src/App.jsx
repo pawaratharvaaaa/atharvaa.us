@@ -6,9 +6,11 @@ import { ProjectDetail } from './components/ProjectDetail';
 import { Now } from './components/Now';
 import { Lab } from './components/Lab';
 import { Contact } from './components/Contact';
+import { NotFound } from './components/NotFound';
 import { Footer } from './components/Footer';
 import { CommandPalette } from './components/CommandPalette';
 import { SnakeModal } from './components/SnakeModal';
+import { projects } from './data/projectsData';
 import { playSuccess } from './utils/audio';
 
 export function App() {
@@ -73,6 +75,7 @@ export function App() {
   useEffect(() => {
     let konamiHistory = [];
     const konamiSeq = ['arrowup', 'arrowup', 'arrowdown', 'arrowdown', 'arrowleft', 'arrowright', 'arrowleft', 'arrowright', 'b', 'a'];
+    let secret404History = [];
 
     function onKeyDown(e) {
       // Hotkeys for palette: ` or . or Cmd+K / Ctrl+K
@@ -81,6 +84,50 @@ export function App() {
           e.preventDefault();
           setIsPaletteOpen(true);
           return;
+        }
+      }
+
+      // Secret Admin shortcuts to open 404 page:
+      // Supports:
+      // 1. Ctrl + Shift + 0 (and Cmd + Shift + 0)
+      // 2. Ctrl + Shift + O (letter O)
+      // 3. Ctrl + Alt + 0 (immune to Windows Language Bar hotkey interception)
+      // 4. Alt + Shift + 0
+      const isZero =
+        e.code === 'Digit0' ||
+        e.code === 'Numpad0' ||
+        e.key === '0' ||
+        e.key === ')' ||
+        e.keyCode === 48 ||
+        e.keyCode === 96;
+
+      const isLetterO = e.code === 'KeyO' || e.key === 'o' || e.key === 'O';
+
+      const hasCtrl = e.ctrlKey || e.metaKey;
+      const isCtrlShift = hasCtrl && e.shiftKey && (isZero || isLetterO);
+      const isCtrlAlt = hasCtrl && e.altKey && (isZero || isLetterO);
+      const isAltShift = e.altKey && e.shiftKey && (isZero || isLetterO);
+
+      if (isCtrlShift || isCtrlAlt || isAltShift) {
+        e.preventDefault();
+        e.stopPropagation();
+        handleNavigate('404');
+        return;
+      }
+
+      // 5. Secret sequence: typing '4' -> '0' -> '4' anywhere on the page
+      const isInput = e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable);
+      if (!isInput) {
+        if (e.key === '4' || e.key === '0') {
+          secret404History.push(e.key);
+          if (secret404History.length > 3) secret404History.shift();
+          if (secret404History.join('') === '404') {
+            e.preventDefault();
+            handleNavigate('404');
+            return;
+          }
+        } else if (e.key && e.key.length === 1 && !e.ctrlKey && !e.altKey && !e.metaKey) {
+          secret404History = [];
         }
       }
 
@@ -113,9 +160,14 @@ export function App() {
   let ViewComponent = Home;
   let detailId = null;
 
-  if (route === 'work') {
+  const isProjectDetail = route.startsWith('detail-');
+  const projectExists = isProjectDetail && projects.some((p) => p.id === route.replace('detail-', ''));
+
+  if (route === 'home' || route === '') {
+    ViewComponent = Home;
+  } else if (route === 'work') {
     ViewComponent = Work;
-  } else if (route.startsWith('detail-')) {
+  } else if (isProjectDetail && projectExists) {
     ViewComponent = ProjectDetail;
     detailId = route.replace('detail-', '');
   } else if (route === 'now') {
@@ -125,7 +177,7 @@ export function App() {
   } else if (route === 'contact') {
     ViewComponent = Contact;
   } else {
-    ViewComponent = Home;
+    ViewComponent = NotFound;
   }
 
   return (
@@ -157,6 +209,8 @@ export function App() {
           <Work onNavigate={handleNavigate} />
         ) : ViewComponent === Contact ? (
           <Contact />
+        ) : ViewComponent === NotFound ? (
+          <NotFound onNavigate={handleNavigate} />
         ) : (
           <Home
             onNavigate={handleNavigate}

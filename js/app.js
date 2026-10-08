@@ -43,6 +43,22 @@ document.addEventListener('DOMContentLoaded', () => {
         openPal();
         return;
       }
+    // Secret Admin shortcuts to open 404 page:
+    const isZero =
+      e.code === 'Digit0' ||
+      e.code === 'Numpad0' ||
+      e.key === '0' ||
+      e.key === ')' ||
+      e.keyCode === 48 ||
+      e.keyCode === 96;
+
+    const isLetterO = e.code === 'KeyO' || e.key === 'o' || e.key === 'O';
+    const hasCtrl = e.ctrlKey || e.metaKey;
+
+    if ((hasCtrl && e.shiftKey && (isZero || isLetterO)) || (hasCtrl && e.altKey && (isZero || isLetterO)) || (e.altKey && e.shiftKey && (isZero || isLetterO))) {
+      e.preventDefault();
+      navTo('404');
+      return;
     }
 
     if (e.key === 'Escape') {

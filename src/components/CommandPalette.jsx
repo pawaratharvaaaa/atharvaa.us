@@ -117,6 +117,15 @@ export function CommandPalette({ isOpen, onClose, onNavigate, theme, onToggleThe
     return item.label.toLowerCase().includes(q) || item.hint.toLowerCase().includes(q) || item.group.toLowerCase().includes(q);
   });
 
+  if (q.includes('404') || q.includes('admin')) {
+    filteredItems.unshift({
+      group: 'Admin',
+      label: ':404',
+      hint: 'secret 404 error page',
+      action: () => onNavigate('404')
+    });
+  }
+
   useEffect(() => {
     setSelectedIndex(0);
   }, [query]);

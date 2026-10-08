@@ -82,7 +82,20 @@ export function ProjectDetail({ projectId, onNavigate }) {
           <span className="tape tape-top" style={{ '--r': '-2deg' }}></span>
           <span className="tape tape-bottom" style={{ '--r': '2.5deg' }}></span>
           <div className="preview-canvas">
-            <div className="watermark">{project.watermark}</div>
+            {project.image ? (
+              <img
+                src={project.image}
+                alt={project.title}
+                style={{
+                  maxHeight: '220px',
+                  maxWidth: '90%',
+                  objectFit: 'contain',
+                  borderRadius: '6px'
+                }}
+              />
+            ) : (
+              <div className="watermark">{project.watermark}</div>
+            )}
             <div className="desc">{project.previewDesc}</div>
           </div>
         </div>

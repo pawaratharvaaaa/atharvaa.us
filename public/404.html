@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en" data-theme="dark" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>404 — Register Missing · Atharvaa Pawar</title>
+  <meta name="robots" content="noindex, follow" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+  <!-- Google Fonts: Fraunces, Inter Tight, Geist Mono, Caveat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=Geist+Mono:wght@400;500;600;700&family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root, [data-theme="dark"] {
+      --paper: #0e0d0b;
+      --paper-2: #15130f;
+      --ink: #ece6d8;
+      --ink-2: #a8a193;
+      --rule: #2a2722;
+      --muted: #6b6458;
+      --accent: #ff5a3d;
+      --accent-ink: #0e0d0b;
+      --tape: #d4a54e;
+      --err: #d66f5a;
+    }
+    [data-theme="light"] {
+      --paper: #f4efe6;
+      --paper-2: #eadfc9;
+      --ink: #161412;
+      --ink-2: #3a342d;
+      --rule: #d9cfbd;
+      --muted: #8a8173;
+      --accent: #d63a1a;
+      --accent-ink: #fffaf2;
+      --tape: #f3d27a;
+      --err: #a04432;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Inter Tight", system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 20px;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+    }
+    .container {
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .editorial {
+      font-family: "Fraunces Variable", "Fraunces", Georgia, serif;
+    }
+    .mono {
+      font-family: "Geist Mono", "JetBrains Mono", monospace;
+    }
+    .hand {
+      font-family: "Caveat", cursive;
+    }
+    .rule-row {
+      display: flex;
+      justify-content: space-between;
+      border-block: 1px solid var(--rule);
+      padding: 6px 0;
+      font-family: "Geist Mono", monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .rule-row .val {
+      color: var(--ink);
+    }
+    .rule-row.status {
+      margin-top: -16px;
+      margin-bottom: 32px;
+      border-top: 0;
+    }
+    .detail-head {
+      margin-bottom: 32px;
+    }
+    .detail-title {
+      font-size: clamp(3.2rem, 8vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .detail-subtitle {
+      font-size: 1.25rem;
+      color: var(--ink-2);
+      margin-bottom: 24px;
+    }
+    .stats-dl {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 16px;
+      padding: 16px 0;
+      border-block: 1px solid var(--rule);
+      font-size: 0.8rem;
+    }
+    .stats-dl dt {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+      font-size: 0.7rem;
+    }
+    .stats-dl dd {
+      color: var(--ink);
+      font-weight: 500;
+    }
+    .cover-frame {
+      margin: 36px 0;
+      display: grid;
+      justify-items: center;
+    }
+    .taped-card {
+      background: var(--paper-2);
+      border: 1px solid var(--rule);
+      width: 100%;
+      box-shadow: 0 12px 40px -14px rgba(0,0,0,0.5);
+      padding: 16px;
+      position: relative;
+      transform: rotate(-0.75deg);
+    }
+    .tape {
+      background: linear-gradient(135deg, color-mix(in srgb, var(--tape) 65%, transparent) 0%, color-mix(in srgb, var(--tape) 35%, transparent) 100%);
+      border: 1px solid color-mix(in srgb, var(--tape) 55%, transparent);
+      height: 22px;
+      width: 92px;
+      pointer-events: none;
+      position: absolute;
+    }
+    .tape-top {
+      top: -10px;
+      left: 50%;
+      margin-left: -46px;
+      transform: rotate(-2deg);
+    }
+    .tape-bottom {
+      bottom: -10px;
+      left: 50%;
+      margin-left: -46px;
+      transform: rotate(2.5deg);
+    }
+    .preview-canvas {
+      aspect-ratio: 16 / 9;
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      text-align: center;
+      padding: 24px;
+    }
+    .preview-canvas .watermark {
+      font-family: "Fraunces Variable", "Fraunces", serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900;
+      color: var(--err);
+    }
+    .preview-canvas .desc {
+      font-family: "Geist Mono", monospace;
+      font-size: 0.85rem;
+      color: var(--muted);
+      max-width: 44ch;
+    }
+    .pull {
+      font-family: "Fraunces Variable", "Fraunces", serif;
+      font-style: italic;
+      font-size: 1.25rem;
+      color: var(--ink-2);
+      border-inline-start: 2px solid var(--accent);
+      padding-inline-start: 16px;
+      margin: 32px 0;
+    }
+    .actions {
+      display: flex;
+      gap: 16px;
+      justify-content: space-between;
+      border-top: 1px solid var(--rule);
+      padding-top: 24px;
+      font-size: 0.875rem;
+      flex-wrap: wrap;
+    }
+    .actions a {
+      color: var(--ink-2);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .actions a:hover {
+      color: var(--accent);
+    }
+    .actions a.primary {
+      color: var(--accent);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    // Inherit stored theme
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    }
+  </script>
+
+  <main class="container">
+    <div class="rule-row" dir="ltr">
+      <span>ERR</span>
+      <span>/ 404</span>
+      <span>2026</span>
+      <span>REGISTER MISSING</span>
+    </div>
+
+    <div class="rule-row status" dir="ltr">
+      <span>LAT <span class="val">19°04'N</span></span>
+      <span>LON <span class="val">72°52'E</span></span>
+      <span>STATUS <span class="val" style="color: var(--err)">404 NOT FOUND</span></span>
+    </div>
+
+    <header class="detail-head">
+      <h1 class="detail-title editorial">404 — Page Not Found</h1>
+      <p class="detail-subtitle">
+        The requested page or artifact does not exist in this quarterly volume.
+      </p>
+
+      <dl class="stats-dl mono">
+        <div>
+          <dt>status</dt>
+          <dd style="color: var(--err); font-weight: 600;">404 · NOT FOUND</dd>
+        </div>
+        <div>
+          <dt>origin</dt>
+          <dd>unmapped coordinate</dd>
+        </div>
+        <div>
+          <dt>resolution</dt>
+          <dd>return to index</dd>
+        </div>
+        <div>
+          <dt>location</dt>
+          <dd>Bhatwadi, Mumbai</dd>
+        </div>
+      </dl>
+    </header>
+
+    <figure class="cover-frame">
+      <div class="taped-card">
+        <span class="tape tape-top"></span>
+        <span class="tape tape-bottom"></span>
+        <div class="preview-canvas">
+          <div class="watermark">404</div>
+          <div class="desc">
+            Whatever you were looking for has either moved, been archived, or never existed in the register.
+          </div>
+        </div>
+      </div>
+    </figure>
+
+    <blockquote class="pull">
+      “not all who wander are lost, but this url definitely is.”
+    </blockquote>
+
+    <footer class="actions mono">
+      <a href="/#home" class="primary">← [00] return to masthead</a>
+      <a href="/#work">[01] selected work →</a>
+    </footer>
+  </main>
+</body>
+</html>

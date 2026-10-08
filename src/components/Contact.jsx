@@ -43,6 +43,13 @@ export function Contact() {
       sub: 'Bhatwadi, Ghatkopar, Mumbai',
       host: 'base',
       href: 'https://maps.google.com/?q=Bhatwadi,+Ghatkopar,+Mumbai'
+    },
+    {
+      num: '07',
+      where: 'Buy Me a Coffee',
+      sub: 'buymeacoffee.com/pawaratharvaaaa',
+      host: 'fuel',
+      href: 'https://buymeacoffee.com/pawaratharvaaaa'
     }
   ];
 

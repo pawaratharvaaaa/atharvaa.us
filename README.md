@@ -32,7 +32,7 @@ A publication-grade, tactile editorial portfolio quarterly inspired by [ziad.us]
 
 | # | Project | Tech Stack | Status | Live Demo / Repository |
 |---|---|---|---|---|
-| **01** | **musclempire** | TypeScript · React · Vite · Google Apps Script · Vercel | `SHIPPED` | [Live App](https://musclempire-five.vercel.app) · [GitHub Repo](https://github.com/pawaratharvaaaa/musclempire) |
+| **01** | **musclempire** | TypeScript · React · Vite · Google Apps Script · Vercel | `SHIPPED` | [Live App](https://musclempire.in) · [GitHub Repo](https://github.com/pawaratharvaaaa/musclempire) |
 | **02** | **music-model** | Python · FastAPI · Scikit-learn · Double Metaphone · Web Audio | `SHIPPED` | [GitHub Repo](https://github.com/pawaratharvaaaa/music-model) |
 | **03** | **Lumen** | TypeScript · Electron · Vite · LRC Sidecar | `ONGOING` | [GitHub Repo](https://github.com/pawaratharvaaaa/appeul-music) |
 | **04** | **wedoit** | React · TypeScript · Vite · Supabase · TailwindCSS | `SHIPPED` | [Live App](https://wedoit-three.vercel.app) · [GitHub Repo](https://github.com/pawaratharvaaaa/wedoit) |
